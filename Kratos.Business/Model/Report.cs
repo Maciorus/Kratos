@@ -33,5 +33,7 @@ namespace Kratos.Business.Model
     public Dictionary<DocumentGroupType, List<ReportItem>> UnmatchedItems { get; set; }
 
     public List<ReportItem> Duplicates { get; set; } = new List<ReportItem>();
+
+    public List<ReportItem> Both { get; set; } = new List<ReportItem>();
   }
 }

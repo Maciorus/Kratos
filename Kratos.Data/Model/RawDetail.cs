@@ -20,6 +20,7 @@ namespace Kratos.Data.Model
     public string Col12;
     public string Col13;
     public string Col14;
+    [FieldQuoted('"', QuoteMode.OptionalForBoth, MultilineMode.NotAllow)]
     public string Col15;
     [FieldQuoted('"', QuoteMode.OptionalForBoth, MultilineMode.NotAllow)]
     public string Col16;

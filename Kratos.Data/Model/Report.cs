@@ -23,6 +23,8 @@ namespace Kratos.Data.Model
     public Dictionary<string, List<ReportItem>> UnmatchedItems { get; set; }
 
     public List<ReportItem> Duplicates { get; set; } = new List<ReportItem>();
+
+    public List<ReportItem> Both { get; set; } = new List<ReportItem>();
   }
 }
 

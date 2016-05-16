@@ -30,11 +30,13 @@ namespace Kratos.Business.Controllers
     {
       var receivables = ReceivablesFactory.Create(receivablesView.GetAll());
       var payables = PayablesFactory.Create(payablesView.GetAll());
+      
+      //var documents = DictionaryExtensions.Merge(receivables.Documents, payables.Documents);
 
-      var documents = DictionaryExtensions.Merge(receivables.Documents, payables.Documents);
+      var dupsAndMerged = DictionaryExtensions.GetDuplicateAndMerge(receivables.Documents, payables.Documents);
       var duplicates = DictionaryExtensions.Merge(receivables.Duplicates, payables.Duplicates);
 
-      return ReportItemsFactory.Create(detailsView.GetAll(), documents, duplicates);
+      return ReportItemsFactory.Create(detailsView.GetAll(), dupsAndMerged.Item1, duplicates, dupsAndMerged.Item2);
 
     }
 

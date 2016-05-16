@@ -11,7 +11,8 @@ namespace Kratos.Business.Logic.Factories
     public static Report Create(
       List<RawDetail> rawDetails, 
       Dictionary<ulong, Document> documents,
-      Dictionary<ulong, List<Document>> duplicates)
+      Dictionary<ulong, List<Document>> duplicates,
+      Dictionary<ulong, List<Document>> both)
     {
       int itemId = 1;
 
@@ -56,6 +57,19 @@ namespace Kratos.Business.Logic.Factories
                 ItemFactory.Create(
                     rawDetails[index],
                     dup,
+                    itemId));
+            }
+          }
+          else if (both.ContainsKey(documentId))
+          {
+            itemId++;
+
+            foreach (var multi in both[documentId])
+            {
+              reportItems.Both.Add(
+                ItemFactory.Create(
+                    rawDetails[index],
+                    multi,
                     itemId));
             }
           }

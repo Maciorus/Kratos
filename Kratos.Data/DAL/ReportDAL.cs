@@ -52,12 +52,22 @@ namespace Kratos.Data.DAL
           sb.AppendLine(_reportEngine.WriteString(kvp.Value));
         }
       }
+
+      // both
+      if (report.Duplicates.Any())
+      {
+        sb.AppendLine("Double:");
+        sb.AppendLine(_reportEngine.WriteString(report.Both));
+      }
+
       // duplicates
       if (report.Duplicates.Any())
       {
         sb.AppendLine("Duplicates:");
         sb.AppendLine(_reportEngine.WriteString(report.Duplicates));
       }
+
+ 
 
       // to file
       File.WriteAllText(_reportFile.FullName, sb.ToString());

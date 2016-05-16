@@ -9,7 +9,8 @@ namespace Kratos.Data.Model
     public string Col1;
     public string Col2;
     public string Col3;
-    public string Col4;
+        [FieldQuoted('"', QuoteMode.OptionalForBoth, MultilineMode.NotAllow)]
+        public string Col4;
     [FieldQuoted('"', QuoteMode.OptionalForBoth, MultilineMode.NotAllow)]
     public string Col5;
     public string Col6;
@@ -21,6 +22,7 @@ namespace Kratos.Data.Model
     [FieldQuoted('"', QuoteMode.OptionalForBoth, MultilineMode.NotAllow)]
     public string Col11;
     public string Col12;
+    [FieldQuoted('"', QuoteMode.OptionalForBoth, MultilineMode.NotAllow)]
     public string Col13;
 
     public string Reference => Col4;
