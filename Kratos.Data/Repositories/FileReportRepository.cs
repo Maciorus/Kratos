@@ -4,6 +4,7 @@ using System.Text;
 using AutoMapper;
 using FileHelpers;
 using Kratos.Business.Interfaces;
+using Kratos.Data.Configuration;
 using Kratos.Data.Model;
 
 
@@ -16,6 +17,8 @@ namespace Kratos.Data.Repositories
 
     public FileReportRepository(FileInfo reportFile)
     {
+      AutoMapperConfiguration.Configure();
+
       _reportEngine = new FileHelperEngine<ReportItem>
       {
         HeaderText = ReportItem.HeaderText

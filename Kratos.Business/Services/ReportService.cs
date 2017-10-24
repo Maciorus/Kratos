@@ -19,11 +19,6 @@ namespace Kratos.Business.Services
             _receivevablesRepository = receivevablesRepository;
             _reportRepository = reportRepository;
             _detailsRepository = detailsRepository;
-
-            ////payablesView = new PayablesRepository(new PayablesDAL(new FileInfo(ConfigurationManager.AppSettings["PayablesFile"])));
-            ////receivablesView = new ReceivablesView(new FileInfo(ConfigurationManager.AppSettings["ReceivablesFile"]));
-            ////_detailsRepository = new DetailsRepository(new FileInfo(ConfigurationManager.AppSettings["DetailsFile"]));
-            ////reportView = new ReportView(new ReportDAL(new FileInfo(ConfigurationManager.AppSettings["ReportFile"])));
         }
 
         public void GenerateReport()

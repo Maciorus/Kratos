@@ -6,37 +6,40 @@ using Kratos.Data.Model;
 
 namespace Kratos.Data.Factories
 {
-    public class DetailFactory
+  public class DetailFactory
+  {
+    private static readonly CultureInfo Culture = new CultureInfo("de-DE");
+
+    public static List<Detail> Create(List<RawDetail> rawList)
     {
-        private static readonly CultureInfo Culture = new CultureInfo("de-DE");
+      var details = new List<Detail>();
 
-        public static List<Detail> Create(List<RawDetail> rawList)
+      var row = 1;
+
+      foreach (var rawDetail in rawList)
+      {
+        var detail = new Detail()
         {
-            var details = new List<Detail>();
+          RowId = row++,
+          GroupCell = rawDetail.Col3,
+          TRS = rawDetail.Col20,
+          Reference = rawDetail.Col15
+      };
 
-            foreach (var rawDetail in rawList)
-            {
-                ulong.TryParse(rawDetail.Col14, out var documentId);
+        if (ulong.TryParse(rawDetail.Col14, out var documentId))
+        {
+          detail.DocumentId = documentId;
 
-                var dateTime = DateTime.ParseExact(rawDetail.Col11, "yyyy.MM.dd", CultureInfo.InvariantCulture);
-
-                var item = new Detail()
-                {
-                    DocumentId = documentId,
-                    GroupCell = rawDetail.Col3,
-                    TRS = rawDetail.Col20,
-                    Reference = rawDetail.Col15,
-                    Date = dateTime,
-                    Net = decimal.Parse(rawDetail.Col22, Culture),
-                    VAT = decimal.Parse(rawDetail.Col25, Culture),
-                    Total = decimal.Parse(rawDetail.Col28, Culture)
-                };
-
-                details.Add(item);
-            }
-
-            return details;
-
+          detail.Date = DateTime.ParseExact(rawDetail.Col11, "yyyy.MM.dd", CultureInfo.InvariantCulture);
+          detail.Net = decimal.Parse(rawDetail.Col22, Culture);
+          detail.VAT = decimal.Parse(rawDetail.Col25, Culture);
+          detail.Total = decimal.Parse(rawDetail.Col28, Culture);
         }
+
+        details.Add(detail);
+      }
+
+      return details;
     }
+  }
 }

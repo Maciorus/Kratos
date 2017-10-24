@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Kratos.Business.Model;
 
 namespace Kratos.Data.Configuration
 {
@@ -8,8 +9,8 @@ namespace Kratos.Data.Configuration
         {
             Mapper.Initialize(cfg =>
             {
-                cfg.CreateMap<Model.ReportItem, Data.Model.ReportItem>();
-                cfg.CreateMap<Model.Report, Data.Model.Report>();
+                cfg.CreateMap<ReportItem, Model.ReportItem>();
+                cfg.CreateMap<Report, Model.Report>();
             });
         }
     }
