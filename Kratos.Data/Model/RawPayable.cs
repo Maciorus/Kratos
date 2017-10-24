@@ -1,5 +1,5 @@
 ﻿using FileHelpers;
-using Kratos.Data.Interfaces;
+using Kratos.Business.Interfaces;
 
 namespace Kratos.Data.Model
 {

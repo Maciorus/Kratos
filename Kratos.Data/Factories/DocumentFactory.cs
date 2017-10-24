@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
+using Kratos.Business.Logic;
 using Kratos.Business.Model;
-using Kratos.Data.Interfaces;
 
-namespace Kratos.Business.Logic.Factories
+namespace Kratos.Data.Factories
 {
   public class DocumentFactory
   {

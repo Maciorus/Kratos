@@ -1,19 +1,20 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Text;
+using AutoMapper;
 using FileHelpers;
-
+using Kratos.Business.Interfaces;
 using Kratos.Data.Model;
-using Kratos.Data.Interfaces;
 
-namespace Kratos.Data.DAL
+
+namespace Kratos.Data.Repositories
 {
-  public class ReportDAL : IReportDAL
+  public class FileReportRepository : IReportRepository
   {
     private readonly FileHelperEngine<ReportItem> _reportEngine;
     private readonly FileInfo _reportFile;
 
-    public ReportDAL(FileInfo reportFile)
+    public FileReportRepository(FileInfo reportFile)
     {
       _reportEngine = new FileHelperEngine<ReportItem>
       {
@@ -22,9 +23,11 @@ namespace Kratos.Data.DAL
       _reportFile = reportFile;
     }
 
-    public void Write(Report report)
+    public void Write(Business.Model.Report businessReport)
     {
-      StringBuilder sb = new StringBuilder();
+      var report = Mapper.Map<Report>(businessReport);
+
+      var sb = new StringBuilder();
 
       foreach (var kvp in report.Items)
       {
@@ -66,8 +69,6 @@ namespace Kratos.Data.DAL
         sb.AppendLine("Duplicates:");
         sb.AppendLine(_reportEngine.WriteString(report.Duplicates));
       }
-
- 
 
       // to file
       File.WriteAllText(_reportFile.FullName, sb.ToString());

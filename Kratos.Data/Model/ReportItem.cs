@@ -36,19 +36,4 @@ namespace Kratos.Data.Model
     [FieldConverter(typeof(MoneyConverter))]
     public decimal Total;
   }
-
-  ////[AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
-  ////public class FieldTitleAttribute : Attribute
-  ////{
-  ////  public FieldTitleAttribute(string name)
-  ////  {
-  ////    if (name == null) throw new ArgumentNullException("name");
-  ////    Name = name;
-  ////  }
-
-  ////  public string Name { get; private set; }
-  ////}
-
-  
-
 }

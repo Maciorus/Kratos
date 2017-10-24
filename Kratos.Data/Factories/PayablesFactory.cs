@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using Kratos.Business.Extensions;
+using Kratos.Business.Logic;
 using Kratos.Business.Model;
 using Kratos.Data.Model;
 
-namespace Kratos.Business.Logic.Factories
+namespace Kratos.Data.Factories
 {
   public class PayablesFactory
   {
