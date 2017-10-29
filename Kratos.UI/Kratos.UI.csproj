@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -64,10 +64,6 @@
     <ProjectReference Include="..\Kratos.Business\Kratos.Business.csproj">
       <Project>{43f0fdf5-9070-4657-b532-751a70b22ec6}</Project>
       <Name>Kratos.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Kratos.Data\Kratos.Data.csproj">
-      <Project>{5169D44F-953A-42C1-8961-3DDDF43C663F}</Project>
-      <Name>Kratos.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
